@@ -544,7 +544,10 @@ function pushNext(ele){
                     CalcStack.push(0);
                 }
             }
+            if(ErrorLog==null)
             CalcResult.innerText=wrapUpCalc();
+            else{ CalcResult.innerText=ErrorLog;
+            }
         }
 
 
