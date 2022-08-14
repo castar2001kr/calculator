@@ -318,12 +318,14 @@ function primeCalc(){
 
     }else if(CalcStack.operator=='%'){
         CalcStack.operator=null;
-        rvaltopush=first%second;
+        valtopush=first%second;
     }
 
     if(isNaN(valtopush)){
         ErrorLog="잘못된 수식 또는 계산 범위 초과";
     }
+
+    
 
     return valtopush;
 
