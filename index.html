@@ -298,6 +298,7 @@ function primeCalc(){
 
     let second=CalcStack.pop();
     let first=CalcStack.pop();
+    let valtopush=0;
 
     console.log('.......'+CalcStack.operator)
 
@@ -309,16 +310,22 @@ function primeCalc(){
 
         console.log(first*second);
 
-        return first*second
+        valtopush=first*second
 
     }else if(CalcStack.operator=='/'){
         CalcStack.operator=null;
-        return first/second;
+        valtopush=first/second;
 
     }else if(CalcStack.operator=='%'){
         CalcStack.operator=null;
-        return first%second;
+        rvaltopush=first%second;
     }
+
+    if(isNaN(valtopush)){
+        ErrorLog="잘못된 수식 또는 계산 범위 초과";
+    }
+
+    return valtopush;
 
 }
 
@@ -350,6 +357,11 @@ function wrapUpCalc(){
         result+=temp;
     }
     console.log('결과 : '+result)
+
+    if(isNaN(result)){
+        Errorlog="잘못된 수식 또는 계산 범위 초과";
+    }
+
     return result;
 
 }
@@ -550,13 +562,8 @@ function pushNext(ele){
                 }
             }
             if(ErrorLog==""){
-                let lastResult=wrapUpCalc();
-
-                if(lastResult!=NaN)
-                CalcResult.innerText=lastResult;
-                else{
-                    CalcResult.innerText="잘못된 수식. 또는 계산 오류."
-                }
+              
+                CalcResult.innerText=wrapUpCalc();
                 
             }
 
