@@ -238,7 +238,7 @@ function btnEvent(){
         CalcStack=new Stack();
         CalcStack.parent='last';
         NumStack=new Stack();
-        ErrorLog=null;
+        ErrorLog="";
 
         storage=new Array();
         stoCount=0;
@@ -405,61 +405,61 @@ function pushNext(ele){
 
 
     }else if(ele=='*'){
+        
+        if(CalcStack.operator!=null){
+            
+            let comnum=NumComplete();
+            if(!Nullnumcom){
+
+                CalcStack.push(comnum);
+            }
+            
+            CalcStack.push(primeCalc());
+
+            }else{
+                let comnum=NumComplete();
+                if(!Nullnumcom){
+
+                CalcStack.push(comnum);
+                }
+            }
 
         if(CalcStack.isEmpty()){
             ErrorLog='곱하기가 잘못된 곳에 들어갓습니다...';
         }
-        
-        if(CalcStack.operator!=null){
-            
-            let comnum=NumComplete();
-            if(!Nullnumcom){
-
-                CalcStack.push(comnum);
-            }
-            
-            CalcStack.push(primeCalc());
-
-            }else{
-                let comnum=NumComplete();
-                if(!Nullnumcom){
-
-                CalcStack.push(comnum);
-                }
-            }
-
        
         CalcStack.operator='*';
         
     }else if(ele=='/'){
+        
+
+        if(CalcStack.operator!=null){
+            
+            let comnum=NumComplete();
+            if(!Nullnumcom){
+
+                CalcStack.push(comnum);
+            }
+            
+            CalcStack.push(primeCalc());
+
+            }else{
+                let comnum=NumComplete();
+                if(!Nullnumcom){
+
+                CalcStack.push(comnum);
+                }
+            }
+
         if(CalcStack.isEmpty()){
             ErrorLog='나누기가 잘못된 곳에 들어갓습니다...';
         }
 
-        if(CalcStack.operator!=null){
-            
-            let comnum=NumComplete();
-            if(!Nullnumcom){
 
-                CalcStack.push(comnum);
-            }
-            
-            CalcStack.push(primeCalc());
-
-            }else{
-                let comnum=NumComplete();
-                if(!Nullnumcom){
-
-                CalcStack.push(comnum);
-                }
-            }
         CalcStack.operator='/';
         
     }else if(ele=='%'){
 
-        if(CalcStack.isEmpty){
-            ErrorLog='모듈레이션 연산자가 잘못된 곳에 들어갓습니다...';
-        }
 
         if(CalcStack.operator!=null){
             
@@ -478,6 +478,11 @@ function pushNext(ele){
                 CalcStack.push(comnum);
                 }
             }
+            
+        if(CalcStack.isEmpty){
+            ErrorLog='모듈레이션 연산자가 잘못된 곳에 들어갓습니다...';
+        }
+
         CalcStack.operator='%';
         
     }else if(ele=='('){
@@ -544,7 +549,13 @@ function pushNext(ele){
                     CalcStack.push(0);
                 }
             }
-            CalcResult.innerText=wrapUpCalc();
+            if(ErrorLog==""){
+
+                CalcResult.innerText=wrapUpCalc();
+            }
+
+            else{ CalcResult.innerText=ErrorLog;
+            }
         }
 
 
