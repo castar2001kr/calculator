@@ -550,8 +550,14 @@ function pushNext(ele){
                 }
             }
             if(ErrorLog==""){
+                let lastResult=wrapUpCalc();
 
-                CalcResult.innerText=wrapUpCalc();
+                if(lastResult!=NaN)
+                CalcResult.innerText=lastResult;
+                else{
+                    CalcResult.innerText="잘못된 수식. 또는 계산 오류."
+                }
+                
             }
 
             else{ CalcResult.innerText=ErrorLog;
