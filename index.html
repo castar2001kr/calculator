@@ -11,8 +11,8 @@
             border-style: solid; /* border style규정해야됨 */
             border-color: red;
             border-width: 10px;
-            width: 600px;
-            height: 750px;
+            width: 500px;
+            height: 600px;
         }
 
         .table td{
@@ -21,12 +21,14 @@
             border-width: 1px;
             
             
-        }
+        }      
+
 
         .table td{
-            height:100px;
-            width: 150px;
+            height: 1/6em;
+            width: 1%;
             align-content: center;
+            table-layout: fixed;
         }
         .table textarea{
             height: inherit;
@@ -34,8 +36,8 @@
         }
 
         .table td button{
-            width: inherit;
-            height: inherit;
+            width: 100%;
+            height: 100%;
             font-size: 20px;
             font-weight: bolder;
         }
@@ -43,7 +45,16 @@
         .table .result{
             height : 150px;
             width: 600px;
+            font-size: 40px;
+            font-weight: 1000;
         }
+
+        .table{
+            position: relative;
+            left: 50px;
+            top: 50px;
+        }
+
     
     
     </style>
@@ -283,7 +294,7 @@ function NumComplete(){
             result+=temp*O;
             O*=10;
         }else if(temp=='.'){
-            Errorlog+='소수점을 두번 적었어요...';
+            ErrorLog+='소수점을 두번 적었어요...';
             alert('ㅡㅡ;;;');
             return;
         }

@@ -7,12 +7,31 @@
     <title>Document</title>
 
     <style>
+         @keyframes myani {
+            0% {transform: rotateZ(0deg);}
+            25% {transform: rotateZ(25deg);}
+            50% {transform: rotateZ(50deg);}
+            75% {transform: rotateZ(75deg);}
+            100% {transform: rotateZ(100deg);}
+            
+        }
+
+
         .table{
             border-style: solid; /* border style규정해야됨 */
             border-color: red;
             border-width: 10px;
             width: 600px;
             height: 750px;
+
+            position: relative;
+
+            animation-name: myani;
+            animation-duration: 4s;
+            animation-delay: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-direction: alternate;
         }
 
         .table td{
@@ -283,7 +302,7 @@ function NumComplete(){
             result+=temp*O;
             O*=10;
         }else if(temp=='.'){
-            Errorlog+='소수점을 두번 적었어요...';
+            ErrorLog+='소수점을 두번 적었어요...';
             alert('ㅡㅡ;;;');
             return;
         }
